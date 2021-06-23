@@ -4,8 +4,8 @@
   "description": "Backend for rotten tomato kinda clone ",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "cd ./src/ && node server.js",
+    "dev": "cd ./src/ && nodemon server.js"
   },
   "repository": {
     "type": "git",
