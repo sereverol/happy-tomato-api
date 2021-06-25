@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://admin123_:admin123_@happytomato.8gkdl.mongodb.net/HappyTomato?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://admin123_:admin123_@happytomato.8gkdl.mongodb.net/HappyTomato?retryWrites=true&w=majority",
+  "jwtSecret": "lallavemaestra"
 }
