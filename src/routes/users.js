@@ -56,7 +56,7 @@ router.post('/', async (req, res) => {
 router.post('/update/fields', auth, async (req, res) => {
   const { name, email, gender, age } = req.body;
 
-  //Build new user
+  //Update user fields
   const userFields = {};
   if (name) userFields.name = name;
   if (email) userFields.email = email;
