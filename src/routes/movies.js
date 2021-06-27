@@ -4,12 +4,44 @@ const request = require('request');
 
 const Movie = require('../models/Movie');
 
-// Save movies in the db
-router.post('/', async (req, res) => {
+// Search by title
+router.get('/search', async (req, res) => {
   const { name } = req.body;
   try {
-    // res.json(movieTitle);
-    //  res.json(req.params.name);
+    // const search = Movie.find({
+    //   title: { $regex: (), $options: 'i' },
+    // });
+    Movie.find([
+      {
+        $search: {
+          index: 'movieIndex',
+          text: {
+            query: 'about time',
+            path: {
+              wildcard: '*',
+            },
+          },
+        },
+      },
+    ]);
+    console.log(search);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+// Retrieve all movies from db
+// -todo handle error
+router.get('/', async (req, res) => {
+  const movies = await Movie.find();
+  res.send(movies);
+});
+
+// Save movies in the db
+router.post('/add-movies', async (req, res) => {
+  const { name } = req.body;
+
+  try {
     const options = {
       uri: `http://www.omdbapi.com/?t=${name}&apikey=d621115c`,
       method: 'GET',
@@ -44,8 +76,6 @@ router.post('/', async (req, res) => {
         res.json(JSON.parse(body));
       }
     });
-
-    // const newMovie = {}
   } catch (err) {
     console.log(err);
   }

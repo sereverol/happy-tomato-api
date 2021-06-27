@@ -5,6 +5,7 @@ const MovieSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    text: true,
   },
   year: {
     type: String,
@@ -62,6 +63,22 @@ const MovieSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  comments: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,
